@@ -1,11 +1,10 @@
 {
-  "strudel.embedded": true,
-  "strudel.port": 3000,
-  "strudel.serverCommand": "npm run dev",
-  "strudel.formatOnSave": true,
-  "strudel.theme": "dark",
+  "strudel.consoleLogLevel": "off",
+  "strudel.liveHighlight.enabled": true,
+  "strudel.openPanelOnPlay": true,
   "editor.formatOnSave": true,
   "files.associations": {
-    "*.strudel": "strudel"
+    "*.strudel": "strudel",
+    "*.strudel.js": "strudel"
   }
 }

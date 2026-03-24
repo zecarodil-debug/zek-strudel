@@ -5,12 +5,20 @@ Entorno de producción musical basado en **Strudel** (TidalCycles web) para live
 ## Inicio Rápido
 
 ```bash
-# Instalar dependencias
-npm install
+# 1. Instalar extensión VSCode
+code --install-extension cmillsdev.strudel-vscode
 
-# Iniciar servidor de desarrollo
-npm run dev
+# 2. Abrir este proyecto en VSCode
+# 3. Abrir un archivo .strudel y presionar Ctrl+Enter
 ```
+
+## Atajos VSCode
+
+| Atajo | Acción |
+|-------|--------|
+| `Ctrl+Enter` | Reproducir archivo |
+| `Ctrl+Shift+Enter` | Reproducir selección |
+| `Ctrl+.` | Detener |
 
 ## Estructura
 
@@ -20,32 +28,28 @@ pol-zek-strudel/
 │   ├── drums.js           # Ritmos y percusión
 │   ├── harmony.js         # Acordes y escalas
 │   ├── melodies.js        # Melodías y leads
-│   ├── fx.js              # Efectos
-│   └── utils.js           # Funciones auxiliares
-├── src/
-│   ├── sessions/          # Sesiones de trabajo
-│   └── projects/         # Proyectos musicales completos
-├── templates/            # Plantillas
-├── samples/              # Samples propios
-└── server/               # Servidor Strudel
+│   └── fx.js              # Efectos
+├── templates/             # Plantillas por estilo
+│   ├── live.strudel       # Live genérico
+│   ├── folk.strudel       # Folk electrónico
+│   ├── jazz-funk.strudel  # Jazz/Funk
+│   └── circo.strudel      # Espectáculo de Bea
+└── src/sessions/          # Sesiones de trabajo
 ```
 
-## Comandos
+## Workflow TDAH
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Iniciar servidor (desarrollo) |
-| `npm run server` | Iniciar servidor (producción) |
-| `npm run vscode` | Instalar extensión VSCode |
+1. **Abre un template** de `templates/`
+2. **15-30 min/sesión** - Un objetivo: drums O harmony O melody
+3. **Evalúa con Ctrl+Enter** y modifica en vivo
+4. **Guarda tu sesión** en `src/sessions/`
 
 ## Proyectos
 
-- **folk/** - Música folk electrónica
-- **jazz-funk/** - Jazz y Funk standards
-- **circo/** - Espectáculo de circo de Bea
+- `src/sessions/cantaloupe.strudel` - Cantaloupe Island
 
 ## Recursos
 
 - [Strudel](https://strudel.cc)
-- [Strudel VSCode](https://github.com/tidalcycles/strudel-vscode)
-- [Documentación](https://strudel.cc/doc/)
+- [Strudel VSCode](https://codeberg.org/cmillsdev/strudel-vscode)
+- [Ejemplos oficiales](https://github.com/tidalcycles/strudel-vscode/tree/main/examples)
