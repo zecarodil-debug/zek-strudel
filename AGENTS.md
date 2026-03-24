@@ -1,52 +1,52 @@
 # AGENTS.md - Pol & ZeK Strudel
 
-Entorno de producción musical basado en **Strudel** (TidalCycles web).
+Music production environment based on **Strudel** (TidalCycles web).
 
-## Librerías Disponibles
+## Available Libraries
 
-| Archivo | Contenido |
-|---------|-----------|
-| `lib/drums.js` | Ritmos y percusión |
-| `lib/harmony.js` | Acordes y escalas |
-| `lib/melodies.js` | Melodías y leads |
-| `lib/fx.js` | Efectos |
+| File | Content |
+|------|---------|
+| `lib/drums.js` | Rhythms and percussion |
+| `lib/harmony.js` | Chords and scales |
+| `lib/melodies.js` | Melodies and leads |
+| `lib/fx.js` | Effects |
 
 ## Templates
 
-| Template | Uso |
+| Template | Use |
 |----------|-----|
-| `templates/live.strudel` | Sesión live genérica |
-| `templates/folk.strudel` | Música folk electrónica |
+| `templates/live.strudel` | Generic live session |
+| `templates/folk.strudel` | Electronic folk |
 | `templates/jazz-funk.strudel` | Jazz/Funk standards |
-| `templates/circo.strudel` | Espectáculo de circo |
+| `templates/circo.strudel` | Circus show |
 
-## Proyectos
+## Projects
 
 ```
 src/projects/
-├── folk/           # Proyecto folk electrónico
-├── jazz-funk/      # Jazz y Funk
+├── folk/           # Electronic folk project
+├── jazz-funk/     # Jazz and Funk
 │   └── cantaloupe.strudel  # Cantaloupe Island
-└── circo/          # Espectáculo de Bea
+└── circo/         # Bea's circus show
 ```
 
-## Comandos
+## Commands
 
 ```bash
-npm run dev    # Iniciar servidor
-npm run server # Iniciar servidor (prod)
+npm run dev    # Start dev server
+npm run server # Start server (prod)
 ```
 
 ## Strudel VSCode
 
-1. Instalar extensión: `strudel-code.strudel-vscode`
-2. Abrir archivo `.strudel`
+1. Install extension: `strudel-code.strudel-vscode`
+2. Open `.strudel` file
 3. `Cmd+Shift+P > Strudel: Evaluate`
 4. `Cmd+Shift+P > Strudel: Format`
 
-## Workflow TDAH
+## Workflow
 
-1. **Sesiones pequeñas**: Trabaja en bloques de 15-30 min
-2. **Un objetivo por sesión**: O drums, O melody, O harmony
-3. **Guarda progreso**: Commit frecuente
-4. **Explora ejemplos**: `strudel-vscode/examples/`
+1. **Small sessions**: Work in 15-30 min blocks
+2. **One goal per session**: drums OR melody OR harmony
+3. **Save progress**: Frequent commits
+4. **Explore examples**: `strudel-vscode/examples/`

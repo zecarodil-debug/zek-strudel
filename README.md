@@ -1,55 +1,55 @@
 # Pol & ZeK - Strudel Studio
 
-Entorno de producción musical basado en **Strudel** (TidalCycles web) para live coding.
+Music production environment based on **Strudel** (TidalCycles web) for live coding.
 
-## Inicio Rápido
+## Quick Start
 
 ```bash
-# 1. Instalar extensión VSCode
+# 1. Install VSCode extension
 code --install-extension cmillsdev.strudel-vscode
 
-# 2. Abrir este proyecto en VSCode
-# 3. Abrir un archivo .strudel y presionar Ctrl+Enter
+# 2. Open this project in VSCode
+# 3. Open a .strudel file and press Ctrl+Enter
 ```
 
-## Atajos VSCode
+## VSCode Shortcuts
 
-| Atajo | Acción |
-|-------|--------|
-| `Ctrl+Enter` | Reproducir archivo |
-| `Ctrl+Shift+Enter` | Reproducir selección |
-| `Ctrl+.` | Detener |
+| Shortcut | Action |
+|----------|--------|
+| `Ctrl+Enter` | Play file |
+| `Ctrl+Shift+Enter` | Play selection |
+| `Ctrl+.` | Stop |
 
-## Estructura
+## Structure
 
 ```
-pol-zek-strudel/
-├── lib/                    # Librerías reutilizables
-│   ├── drums.js           # Ritmos y percusión
-│   ├── harmony.js         # Acordes y escalas
-│   ├── melodies.js        # Melodías y leads
-│   └── fx.js              # Efectos
-├── templates/             # Plantillas por estilo
-│   ├── live.strudel       # Live genérico
-│   ├── folk.strudel       # Folk electrónico
+zek-strudel/
+├── lib/                    # Reusable libraries
+│   ├── drums.js           # Rhythms and percussion
+│   ├── harmony.js         # Chords and scales
+│   ├── melodies.js        # Melodies and leads
+│   └── fx.js              # Effects
+├── templates/             # Templates by style
+│   ├── live.strudel       # Generic live session
+│   ├── folk.strudel       # Electronic folk
 │   ├── jazz-funk.strudel  # Jazz/Funk
-│   └── circo.strudel      # Espectáculo de Bea
-└── src/sessions/          # Sesiones de trabajo
+│   └── circo.strudel     # Bea's circus show
+└── src/projects/         # Projects
 ```
 
-## Workflow TDAH
+## Workflow
 
-1. **Abre un template** de `templates/`
-2. **15-30 min/sesión** - Un objetivo: drums O harmony O melody
-3. **Evalúa con Ctrl+Enter** y modifica en vivo
-4. **Guarda tu sesión** en `src/sessions/`
+1. **Open a template** from `templates/`
+2. **15-30 min/session** - One goal: drums OR harmony OR melody
+3. **Evaluate with Ctrl+Enter** and modify live
+4. **Save your work** in `src/projects/`
 
-## Proyectos
+## Projects
 
-- `src/sessions/cantaloupe.strudel` - Cantaloupe Island
+- `src/projects/jazz-funk/cantaloupe.strudel` - Cantaloupe Island
 
-## Recursos
+## Resources
 
 - [Strudel](https://strudel.cc)
 - [Strudel VSCode](https://codeberg.org/cmillsdev/strudel-vscode)
-- [Ejemplos oficiales](https://github.com/tidalcycles/strudel-vscode/tree/main/examples)
+- [Official examples](https://github.com/tidalcycles/strudel-vscode/tree/main/examples)

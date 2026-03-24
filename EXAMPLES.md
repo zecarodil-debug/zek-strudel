@@ -1,31 +1,31 @@
-# Ejemplos de Strudel VSCode
+# Strudel VSCode Examples
 
-Ejemplos oficiales para aprender y usar como referencia.
+Official examples for learning and reference.
 
-## Ubicación original
+## Original Location
 `../strudel-vscode/examples/`
 
-## Ejemplos recomendados para ti
+## Recommended Examples
 
-| Ejemplo | Estilo | Para aprender |
-|---------|--------|---------------|
-| `sample_drums.str` | Básicos | Ritmos |
-| `delay.str` | FX | Efectos |
-| `jux_un_tollerei.str` | Experimental | Técnicas avanzadas |
-| `good_times.str` | Funk | Estructura |
-| `bass_fuge.str` | Bass | Bajo y armonía |
+| Example | Style | For learning |
+|---------|-------|--------------|
+| `sample_drums.str` | Basics | Rhythms |
+| `delay.str` | FX | Effects |
+| `jux_un_tollerei.str` | Experimental | Advanced techniques |
+| `good_times.str` | Funk | Structure |
+| `bass_fuge.str` | Bass | Bass and harmony |
 
-## Cómo usar
+## How to Use
 
-1. Copia el ejemplo a tu carpeta de trabajo
-2. Ábrelo en VSCode
-3. Presiona `Ctrl+Enter` para reproducir
-4. Modifica y experimenta
+1. Copy the example to your working folder
+2. Open it in VSCode
+3. Press `Ctrl+Enter` to play
+4. Modify and experiment
 
-## Estudia estos conceptos
+## Study These Concepts
 
-- **Patrones**: `s()`, `n()`, `note()`
-- **Tiempo**: `.fast()`, `.slow()`, `.struct()`
-- **Efectos**: `.room()`, `.delay()`, `.lpf()`
-- **Escalas**: `.scale()`
-- **Voz**: `.voicings()`
+- **Patterns**: `s()`, `n()`, `note()`
+- **Time**: `.fast()`, `.slow()`, `.struct()`
+- **Effects**: `.room()`, `.delay()`, `.lpf()`
+- **Scales**: `.scale()`
+- **Voicings**: `.voicings()`
