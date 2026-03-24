@@ -1,0 +1,41 @@
+// ==========================================
+// @Circo Template - Pol & ZeK
+// ==========================================
+// Espectáculo de circo de Bea
+// Necesita: ritmos alegres,FX sorprendentes,transiciones
+
+samples('github:tidalcycles/dirt-samples')
+setcps(0.8)
+
+// Músicacircense: alegre, surprising, festiva
+let circo = stack(
+  // Ritmo festivo
+  s("bd*2 ~ [~ bd] sd*2 ~").bank("tr909"),
+  s("~ ~ cl ~ ~ cl ~ cl ~").gain(0.8),
+  s("cowbell*4").gain(0.6),
+  
+  // Melodía conmemoria
+  n("[0 2 4 5 7 5 4 2 0 1 2 3 4 5 4 3]")
+    .scale("c4:major")
+    .s("gm_ocarina")
+    .fast(1.2)
+    .room(0.4)
+    .gain(0.7),
+  
+  // Efectos sorprendentes
+  s("airport:0").room(1).gain(0.3),
+  
+  // Textura episódica
+  n("[0 2 4 7 11]")
+    .scale("c4:major")
+    .s("sine")
+    .lpf(sine.range(800, 3000).slow(4))
+    .room(0.8)
+    .gain(0.4),
+)
+
+// Transición dramática
+let transition = () => s("glitch:2").room(1).gain(0.8)
+
+// Master con compresión
+circo.compress().room(0.3).size(0.6).lpf(14000).hpf(60).out()

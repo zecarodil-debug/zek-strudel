@@ -1,0 +1,39 @@
+// ==========================================
+// @Folk Template - Pol & ZeK
+// ==========================================
+// Música folk electrónica con elementos tradicionales
+
+setcps(0.75)
+
+// Muiñeira tradicional + electrónica
+samples('github:tidalcycles/dirt-samples')
+
+let folk = stack(
+  // Percusión gallega
+  s("bd ~ bd sd ~ ~ ~ sd").bank("tr909"),
+  s("~ ~ cl ~ ~ ~ cl ~").gain(0.6),
+  
+  // Bordón tradicional
+  note("c2").s("sawbass").cutoff(300).lpq(2).gain(1.0),
+  note("c3").s("triangle").cutoff(600).gain(0.5),
+  
+  // Melodía tradicional
+  n("[0 1 2 [3 4 3 2 1 0] ~ 2]!2 [4 5 4 3 4 2]")
+    .scale("c5:mixolydian")
+    .s("gm_oboe")
+    .fast(1.5)
+    .swing(0.10)
+    .room(0.3)
+    .gain(0.7),
+  
+  // Textura electrónica
+  n("0 2 4 7")
+    .scale("c4:mixolydian")
+    .s("sawtooth")
+    .lpf(sine.range(600, 1800).slow(2))
+    .room(0.5)
+    .gain(0.3)
+)
+
+// Master
+folk.room(0.2).size(0.5).lpf(14000).hpf(60).out()

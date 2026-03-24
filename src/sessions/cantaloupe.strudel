@@ -1,0 +1,31 @@
+// Cantaloupe Island - Herbie Hancock
+// Proyecto: Jazz-Funk
+
+samples('github:tidalcycles/dirt-samples')
+setcps(0.5)
+
+// Progresión: Fm7 - Db7 - Dm7 - G7
+let cantaloupe = stack(
+  // Bajo walking
+  n("0 [1 2] [3 2] 0 <[1 -1] [2 -1]> 0 [1 2] [3 2]")
+    .scale("f2:mixolydian")
+    .s("gm_fretless_bass:1")
+    .gain(1.2),
+  
+  // Acordes stabs
+  note("<Fm7 Db7 Dm7 G7>/4")
+    .voicings("lefthand")
+    .note()
+    .s("piano")
+    .decay(0.2)
+    .room(0.25)
+    .delay(0.15)
+    .gain(0.7),
+  
+  // Batería funk
+  s("bd*2 ~ bd ~").bank("tr909").struct("x ~ x ~").gain(1),
+  s("~ sn ~ sn").bank("tr909"),
+  s("hh*16").bank("tr909").gain(sine.range(0.4, 0.7).fast(2)),
+)
+
+cantaloupe.room(0.3).size(0.5).out()

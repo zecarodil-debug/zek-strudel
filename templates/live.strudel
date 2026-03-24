@@ -1,0 +1,46 @@
+// ==========================================
+// @Live Session Template - Pol & ZeK
+// ==========================================
+// Templates: live, folk, jazz, funk, circo
+// Uso: Copia este archivo a src/sessions/
+
+// Configuración global
+setcps(0.5)
+
+// Master FX
+let master = (pat) => pat
+  .room(0.2).size(0.5)
+  .lpf(15000).hpf(40)
+
+// @Drummer
+let drums = stack(
+  s("bd(3,8)").bank("tr808"),
+  s("~ sn").bank("tr808"),
+  s("hh*16").bank("tr808").gain(sine.range(0.4, 0.8).fast(2))
+)
+
+// @Harmony
+let chords = note("<cmin7 fmin7 g7 cmin7>/4")
+  .voicings("drop2")
+  .s("rhodes")
+  .gain(0.7)
+
+// @Bass
+let bass = note("<c2 f2 g2 c2>").s("sawbass").cutoff(400)
+
+// @Melody
+let melody = n("[0 2 4 5 7 6 4]")
+  .scale("c4:harmonicMinor")
+  .s("sawtooth")
+  .lpf(1500)
+  .gain(0.5)
+
+// Mixer con sliders
+stack(
+  drums.postgain(slider("Drums", 1, 0, 1, 0.01)),
+  chords.postgain(slider("Chords", 1, 0, 1, 0.01)),
+  bass.postgain(slider("Bass", 1, 0, 1, 0.01)),
+  melody.postgain(slider("Melody", 1, 0, 1, 0.01))
+)
+.apply(master)
+.out()

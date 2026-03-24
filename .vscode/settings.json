@@ -1,0 +1,11 @@
+{
+  "strudel.embedded": true,
+  "strudel.port": 3000,
+  "strudel.serverCommand": "npm run dev",
+  "strudel.formatOnSave": true,
+  "strudel.theme": "dark",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.strudel": "strudel"
+  }
+}

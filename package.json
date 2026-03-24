@@ -1,0 +1,22 @@
+{
+  "name": "pol-zek-strudel",
+  "version": "1.0.0",
+  "description": "Entorno de producción musical con Strudel para live coding",
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.js",
+    "start": "node server/index.js",
+    "server": "node server/index.js",
+    "vscode": "code --install-extension strudel-code.strudel-vscode",
+    "examples": "ls strudel-vscode/examples/",
+    "test": "echo \"No tests yet\" && exit 0",
+    "fmt": "echo \"Run from VSCode: Cmd+Shift+P > Strudel: Format\"",
+    "clean": "rm -rf node_modules package-lock.json"
+  },
+  "keywords": ["strudel", "tidalcycles", "livecoding", "music"],
+  "author": "Pol & ZeK",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
