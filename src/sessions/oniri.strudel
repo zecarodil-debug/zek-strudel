@@ -1,0 +1,36 @@
+// "Holy flute"
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Felix Roos
+
+
+
+$:
+//"c4@" 
+//"c4/2 g3*2"
+"c3 eb3(3,8) c4/2 g3*2"
+.superimpose(
+    x=>x.slow(5).add(12),
+    x=>x.slow(2).sub(5)
+  )
+  .add("<0 1>/16")
+  .legato(.5)
+  .note().s('ocarina_vib')
+  .clip(.2)
+  .release(.1)
+  .room(.4)
+  .sometimes(x=>x.delay(.4))
+  .gain(.2)
+  .degradeBy(.7)
+  .color("salmon | orange | darkseagreen")
+  .pianoroll({fold:0,autorange:0,vertical:0,cycles:12,smear:0,minMidi:40,maxMidi:75})
+
+_$: 
+n("0? 1")
+//n("0? 1 [4!3 2] 3*2")
+  .often(x => x.euclidLegato(3,8))
+  .degradeBy(.7)
+  .sound("jazz")
+  //.slow(1|.5)
+  .gain(.3)
+  .often(x => x.vowel("<a i <o u>>").gain(.6))
+  

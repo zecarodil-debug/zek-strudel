@@ -1,0 +1,51 @@
+
+samples('github:tidalcycles/dirt-samples')
+
+setcps(0.5)
+
+
+$: "<Fm7 Db7 Dm7 Fm7>/4".layer(
+  x => x.voicings('lefthand').note().sound("piano")
+    .euclidLegato(5,8)
+    .decay(.2)
+    //.lpf("800 1200 1600 900")
+    .room(.25)
+    .delay(.15)
+    .gain(.8),
+
+  x => 
+    arrange(
+  [8, n("0 4 [6 7]").struct("[x@3 x@3 x x]")],
+  [4, n("0").struct("x - - x@4 -")],
+      [4, "-"]
+)
+    .scale("<f:dorian db:mixolydian d:phrygian f:minor:blues>/4")
+    .legato(sine.range(.2,.7).slow(4))
+    .s("sawtooth")
+    .trans(-12)
+    .lpf(sine.range(600,2000).slow(2))
+    .gain(0.6),
+    x => x.rootNotes("3, 2")
+    .n("1 8 [10 12]")
+    .struct("[x@3 x@3 x x]")
+    .note()
+    .s("sawtooth")
+    .lpf(1800)
+    .legato(.8)
+    .gain(0)
+)
+
+$: s("bd")
+  .bank("RolandTR909")
+  .struct("x ~ x ~")
+  .gain(1)
+
+
+$: 
+  s("breaks125").fit()
+    .slice([0, 0.2, 0.7, 0.3], "4 0 ")
+    //.slice([0,.25,.5,.75], "0 2 [0 3?] <1 [3 0]>")
+    //.splice(8,  "0 1? [2 0]@2 3? 0@2 1")
+    //.scrub("{0.1!2 .25@3 0.7!2 <0:1>}%2")
+  .gain(.3)
+  
