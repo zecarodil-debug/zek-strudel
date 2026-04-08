@@ -11,28 +11,7 @@ $: "<Fm7 Db7 Dm7 Fm7>/4".layer(
     //.lpf("800 1200 1600 900")
     .room(.25)
     .delay(.15)
-    .gain(.8),
-
-  x => 
-    arrange(
-  [8, n("0 4 [6 7]").struct("[x@3 x@3 x x]")],
-  [4, n("0").struct("x - - x@4 -")],
-      [4, "-"]
-)
-    .scale("<f:dorian db:mixolydian d:phrygian f:minor:blues>/4")
-    .legato(sine.range(.2,.7).slow(4))
-    .s("sawtooth")
-    .trans(-12)
-    .lpf(sine.range(600,2000).slow(2))
-    .gain(0.6),
-    x => x.rootNotes("3, 2")
-    .n("1 8 [10 12]")
-    .struct("[x@3 x@3 x x]")
-    .note()
-    .s("sawtooth")
-    .lpf(1800)
-    .legato(.8)
-    .gain(0)
+    .gain(.8)
 )
 
 $: s("bd")
