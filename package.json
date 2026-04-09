@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server/index.js",
-    "start": "node server/index.js",
+    "start": "cd strudel-server && bun run start-session.ts",
+    "start:session": "cd strudel-server && bun run src/main.ts",
     "server": "node server/index.js",
     "vscode": "code --install-extension strudel-code.strudel-vscode",
     "examples": "ls strudel-vscode/examples/",
