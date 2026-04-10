@@ -2,10 +2,12 @@ setcps(1);
 
 
 setcpm(80);
+const chords = "<Am Dm E Am>/2"
+const scales = "<A:minor D:minor:blues E:pentatonic A:dorian>/2"
 
-$: chord("<Am Dm E Am>/2").layer(
+$: chords.layer(
 
-  x=>x.voicing()
+  x=>chord(x).voicing()
   //.transpose(-2)
   //.arp("[0,1,3] <<4 [1,3]> 2> 2")
   //.arp("[0,3] 2 [1,3]")
@@ -17,16 +19,17 @@ $: chord("<Am Dm E Am>/2").layer(
   .delay(0)
   .room(.5).pan(sine.range(.3,.6))
   .s('piano').clip(1)
-  .gain(.2)
+  .gain(0.3)
   ,
 
   x=> x
-  .rootNotes(1)
-  .lpf(400).lpenv(perlin.range(1,5))
-  .ply("3 1")
+  .rootNotes(2)
+  .scale(scales)
+  .scaleTrans(1,2,rand.range(2,4))
+  .euclid(3,6)
   .degradeBy(.3)
-  .s('sawtooth').clip(1)
-  .cutoff(500)
+  .note().s('sawtooth').cutoff(800)
+  .lpf(400).lpenv(perlin.range(1,5))
 )
 
 
