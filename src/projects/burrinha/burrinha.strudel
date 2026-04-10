@@ -1,54 +1,64 @@
-setcps(1);
-
 
 setcpm(80);
+samples('github:tidalcycles/dirt-samples')
 
-$: chord("<Am>/2").layer(
-//$: chord("<Am Dm E Am>/2").layer(
+const chords = "<Am Dm E Am>/2"
+const scales = "<A:minor D:minor:blues E:pentatonic A:dorian>/2"
 
-  x=>x.voicing()
+$: chords.layer(
+
+  x=>chord(x).voicing()
   //.transpose(-2)
-  //.arp("[0,1?,3] <<4 [1,3]> 2> 2?")
-  .arp("[0,3] 2 [1,3]")
-  //.euclid(3,6)
-  .add(perlin.range(0,0.6)).sub("<12 -12>/4").cutoff(perlin.range(2000,8000)).resonance(12)
+  //.arp("[0,1,3] <<4 [1,3]> 2> 2")
+  //.arp("[0,3] 2 [1,3]")
+  .euclid(3,6)
+  .add(perlin.range(0,0.2)).sub("<0 -12>/8").cutoff(perlin.range(500,4000)).resonance(12)
   .decay(.1)
-  .degradeBy(.8)
-  //.sustain(0.5)
-  .delay(0.8)
-  //.room(.5).pan(sine.range(.3,.6))
+  .degradeBy(.2)
+  .sustain(0.5)
+  .delay(0)
+  .room(.5).pan(sine.range(.3,.6))
   .s('piano').clip(1)
-  .gain(0)
+  .gain(0.3)
   ,
 
   x=> x
-  .rootNotes(1)
-  .lpf(500).lpenv(perlin.range(1,5))
-  .ply("2 5")
-  .degradeBy(0.2)
-  .s('sawtooth').clip(1)
-  //.cutoff(500)
-  .gain(0)
+  .rootNotes(2)
+  .scale(scales)
+  .scaleTrans(1,2,rand.range(2,4))
+  .euclid(3,6)
+  .degradeBy(.3)
+  .note().s('sawtooth').cutoff(800)
+  .lpf(400).lpenv(perlin.range(1,5))
 )
 
 
 const xo1 = stack(
-  s("bd").struct("x - x").gain(0.5).jux(rev()),
-  //s("rim").euclid(2, 6).gain(0.2).degradeBy(0.3),
-  s("hh")
-    .struct("x - x x? x x")
-    .gain("0.9 0.4 0.7 0.5 0.8 0.6")
-    .pan("0.2 0.7 0.4 0.6 0.3 0.8"),
-  n("c2 ~ g1").struct("x x x").decay(0.6),
-  s("tamb ~ tamb").struct("x x x")
-).gain(0.2);
-const xo2 = stack(
-  s("bd:3").struct("x - x").gain(0.5).delay(0.2),
-  s("<- hh:4>*3").lpf(sine.range(400, 5000).slow(2)),
-).gain(.2);
-
-//$: arrange([8, xo1]).bank(
-//$: arrange([6, xo1], [2, xo2]).bank(
-_$: arrange([2, xo2]).bank(
-"<RolandTR808 RolandTR909>/8"
+  s("bd").struct("x - x").gain(1).jux(rev())
+  // s("rim").euclid(2, 6).gain(0.2).degradeBy(0.3),
+  // s("hh")
+  //   .struct("x - x x? x x")
+  //   .gain("0.9 0.4 0.7 0.5 0.8 0.6")
+  //   .pan("0.2 0.7 0.4 0.6 0.3 0.8"),
+  // n("c2 ~ g1").struct("x x x").decay(0.6),
+  // s("tamb ~ tamb").struct("x x x").gain(0.5)
 );
+const xo2 = stack(
+  //s("bd:3").struct("x - x").gain(0.5).delay(0.2),
+  s("<- hh:4>*3").lpf(sine.range(400, 5000).slow(2)),
+);
+
+$: xo1
+
+_$: arrange([6, xo1], [2, xo2]).bank(
+  "<RolandTR808 RolandTR909>/8"
+);
+
+
+$: 
+  s("breaks125")
+    .slice([0,.25], "0 <1 2 3>")
+    .clip(".1 1")
+    .often(x =>x.euclid(3,6))
+    .loopAt(1)
+  .gain(.6)
