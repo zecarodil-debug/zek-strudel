@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pol & ZeK Strudel Studio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #1a1a2e;
+      color: #eee;
+      min-height: 100vh;
+    }
+    header {
+      background: #16213e;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0f3460;
+    }
+    header h1 { font-size: 1.5rem; color: #e94560; }
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    nav a:hover { background: #0f3460; }
+    nav a.active { background: #e94560; }
+    main { padding: 2rem; }
+    .file-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .file-card {
+      background: #16213e;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #0f3460;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .file-card:hover {
+      transform: translateY(-2px);
+      border-color: #e94560;
+    }
+    .file-card h3 { color: #e94560; margin-bottom: 0.5rem; }
+    .file-card p { color: #888; font-size: 0.9rem; }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 200px);
+      border: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .breadcrumb a {
+      color: #e94560;
+      text-decoration: none;
+    }
+    .breadcrumb span { color: #888; }
+    #player { display: none; }
+    #player.active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎵 Pol & ZeK Strudel Studio</h1>
+    <nav>
+      <a href="#" onclick="showProjects()">Proxectos</a>
+      <a href="#" onclick="showExamples()">Exemplos</a>
+    </nav>
+  </header>
+  
+  <main>
+    <div id="projects-view">
+      <h2>Os teus proxectos</h2>
+      <div class="file-list" id="project-list"></div>
+    </div>
+    
+    <div id="examples-view" style="display: none;">
+      <h2>Exemplos</h2>
+      <div class="file-list" id="example-list"></div>
+    </div>
+    
+    <div id="player">
+      <div class="breadcrumb">
+        <a href="#" onclick="showProjects()">Proxectos</a>
+        <span>/</span>
+        <span id="current-file"></span>
+      </div>
+      <iframe id="strudel-frame" src=""></iframe>
+    </div>
+  </main>
+
+  <script>
+    const projects = [
+      { name: 'burriña', file: '/src/projects/burriña/burriña.strudel', desc: 'Burriña con xota' },
+      { name: 'cantaloupe', file: '/src/projects/standards/cantaloupe.strudel', desc: 'Cantaloupe Island' },
+    ];
+    
+    const exampleFiles = [
+      { name: 'amensister', file: '/examples/amensister.str' },
+      { name: 'bass_fuge', file: '/examples/bass_fuge.str' },
+      { name: 'chop', file: '/examples/chop.str' },
+      { name: 'dinofunk', file: '/examples/dinofunk.str' },
+      { name: 'giant_steps', file: '/examples/giant_steps.str' },
+      { name: 'good_times', file: '/examples/good_times.str' },
+      { name: 'hyperpop', file: '/examples/hyperpop.str' },
+      { name: 'rezn', file: '/examples/rezn.str' },
+      { name: 'swimming', file: '/examples/swimming.str' },
+    ];
+    
+    function init() {
+      const projectList = document.getElementById('project-list');
+      projects.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'file-card';
+        card.innerHTML = `<h3>${p.name}</h3><p>${p.desc}</p>`;
+        card.onclick = () => loadFile(p.file, p.name);
+        projectList.appendChild(card);
+      });
+      
+      const exampleList = document.getElementById('example-list');
+      exampleFiles.forEach(f => {
+        const card = document.createElement('div');
+        card.className = 'file-card';
+        card.innerHTML = `<h3>${f.name}</h3>`;
+        card.onclick = () => loadFile(f.file, f.name);
+        exampleList.appendChild(card);
+      });
+    }
+    
+    function loadFile(file, name) {
+      const serverUrl = window.location.origin;
+      const url = `${serverUrl}${file}`;
+      document.getElementById('current-file').textContent = name;
+      document.getElementById('strudel-frame').src = `https://strudel.cc/embed?file=${encodeURIComponent(url)}`;
+      document.getElementById('projects-view').style.display = 'none';
+      document.getElementById('examples-view').style.display = 'none';
+      document.getElementById('player').classList.add('active');
+    }
+    
+    function showProjects() {
+      document.getElementById('projects-view').style.display = 'block';
+      document.getElementById('examples-view').style.display = 'none';
+      document.getElementById('player').classList.remove('active');
+      return false;
+    }
+    
+    function showExamples() {
+      document.getElementById('projects-view').style.display = 'none';
+      document.getElementById('examples-view').style.display = 'block';
+      document.getElementById('player').classList.remove('active');
+      return false;
+    }
+    
+    init();
+  </script>
+</body>
+</html>

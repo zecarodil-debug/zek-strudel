@@ -1,0 +1,50 @@
+setcps(1);
+
+
+setcpm(80);
+
+$: chord("<Am Dm E Am>/2").layer(
+
+  x=>x.voicing()
+  //.transpose(-2)
+  //.arp("[0,1,3] <<4 [1,3]> 2> 2")
+  //.arp("[0,3] 2 [1,3]")
+  .euclid(3,6)
+  .add(perlin.range(0,0.2)).sub("<0 -12>/8").cutoff(perlin.range(500,4000)).resonance(12)
+  .decay(.1)
+  .degradeBy(.2)
+  .sustain(0.5)
+  .delay(0)
+  .room(.5).pan(sine.range(.3,.6))
+  .s('piano').clip(1)
+  .gain(.2)
+  ,
+
+  x=> x
+  .rootNotes(1)
+  .lpf(400).lpenv(perlin.range(1,5))
+  .ply("3 1")
+  .degradeBy(.3)
+  .s('sawtooth').clip(1)
+  .cutoff(500)
+)
+
+
+const xo1 = stack(
+  s("bd").struct("x - x").gain(0.5).jux(rev())
+  // s("rim").euclid(2, 6).gain(0.2).degradeBy(0.3),
+  // s("hh")
+  //   .struct("x - x x? x x")
+  //   .gain("0.9 0.4 0.7 0.5 0.8 0.6")
+  //   .pan("0.2 0.7 0.4 0.6 0.3 0.8"),
+  // n("c2 ~ g1").struct("x x x").decay(0.6),
+  // s("tamb ~ tamb").struct("x x x").gain(0.5)
+);
+const xo2 = stack(
+  //s("bd:3").struct("x - x").gain(0.5).delay(0.2),
+  s("<- hh:4>*3").lpf(sine.range(400, 5000).slow(2)),
+);
+
+$: arrange([6, xo1], [2, xo2]).bank(
+  "<RolandTR808 RolandTR909>/8"
+);
