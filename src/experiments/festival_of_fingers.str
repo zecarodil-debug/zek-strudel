@@ -2,16 +2,18 @@
 // @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
 // @by Felix Roos
 
-const chords = "<F>";
-const scales = cat('C minor','C major');
+const chords = "<C>";
+const scales = cat('C:pentatonic','C:blues');
 
 stack(
-  chords.rootNotes(4)
+  chords.rootNotes(3)
     .scale(scales)
     .struct("x(3,8,-2)".fast(2))
-    .scaleTranspose("0 4 0 6".early(".125 .5"))
-    .layer(scaleTranspose("0,<2 [4,6] [5,7]>/4"))
+    //.euclid(3,8)
+    //.sometimes(x => x.euclid(3,9))
+    .scaleTranspose("0 1 2 3 4")
+    //.layer(scaleTranspose("0,<2 [4,6] [5,7]>/4"))
 ).slow(2)
-  .velocity(sine.struct("x*8").add(3/5).mul(2/5).fast(8))
+  //.velocity(sine.struct("x*8").add(3/5).mul(2/5).fast(8))
   .note()
   .pianoroll({labels: 1})

@@ -1,15 +1,19 @@
  setcpm(40)
 const chords = "<C A7b13 Dm G>*2"
-const scales = "<C:pentatonic A:major D:minor:pentatonic G:major>*2"
+const scales = "<C:major A:pentatonic D:minor:blues G:major:blues>*2"
 
 
 chords.layer(
-//x => x.voicings('lefthand').struct("[~ x]*2").note().gain(0),
+x => chord(x)
+.voicing().struct("[~ x]*2")
+.note()
+,
 
 x => x.rootNotes(2)
   .scale(scales)
-  .scaleTrans(1,2,rand.range(0,4))
-  .ply(5,2)
+  .scaleTrans(1,2|4,rand.range(0,4))
+  .ply(3,2)
+  .mask("1 1?.2 1 1?.1 1?")
   .note().s('sawtooth').cutoff(800)
   
 )

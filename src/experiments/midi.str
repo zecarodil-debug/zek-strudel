@@ -1,0 +1,45 @@
+setcps(90/120)
+samples('https://raw.githubusercontent.com/pavlovpavlov/samples/refs/heads/main/Old_strudel.json')
+samples('github:yaxu/spicule')
+
+$: note("c3 eb3(3,8) c4/2 g3*2").slow(2)
+  //.rib(10,4)
+.midi('Craft Synth 2')
+.gain(.7)
+  //.midichan(2)
+
+
+// "Holy flute"
+// @license CC BY-NC-SA 4.0 https://creativecommons.org/licenses/by-nc-sa/4.0/
+// @by Felix Roos
+
+$: "c3 eb3(3,8) c4/2 g3*2"
+
+  .superimpose(
+    x=>x.slow(2).add(12),
+    x=>x.slow(4).sub(5)
+  )
+  .degradeBy(.3)
+  .add("<0 1>/16")
+  .note()
+  //.s('ocarina_vib')
+  .clip(.2)
+  .release(.1).room(1).gain(.6)
+  .color("salmon | orange | darkseagreen")
+  .pianoroll({fold:0,autorange:0,vertical:0,cycles:12,smear:0,minMidi:40,maxMidi:75})
+.midi('reface')
+
+$:   s("pdrums")
+  .n("[100 102 103 104]")
+  .gain(.7)
+  .rib(10,1)
+  .chop(8)
+  .struct("- x - x?")
+  .clip(.8)
+  .rev()
+  //.loopAt(8)
+  //.scrub(irand(8).div(4).seg(4))
+    
+
+_$: note("c3? ~ c3 ~")
+.sound("bd") // solo para referencia rítmica
